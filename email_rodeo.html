@@ -2,13 +2,70 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Envoyer le mail au Bourgmestre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voir Mail type pour le Bourgmestre</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+    }
+    .big-button {
+      display: inline-block;
+      font-size: 1.2em;
+      padding: 1em 2em;
+      width: 90%;
+      max-width: 300px;
+      text-align: center;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    @media (min-width: 600px) {
+      .big-button {
+        font-size: 1.4em;
+        padding: 1.2em 2.5em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div style="text-align:center; margin-top: 50px;">
-    <button onclick="location.href='mailto:kabinet.ph.close@brucity.be?cc=cabinet.a.maes@brucity.be,stoprodeoatomium@gmail.com&subject=Stop%20%C3%A0%20la%20folie%20des%20rod%C3%A9os!&body=Monsieur%20le%20Bourgmestre%2C%0A%0AJ%E2%80%99habite%20%C3%A0%20Laeken%20et%20je%20vous%20%C3%A9cris%20car%20je%20suis%20victime%20de%20nuisances%20sonores%20caus%C3%A9es%20par%20des%20rod%C3%A9os%20urbains.%20Aujourd%E2%80%99hui%20encore%2C%20ces%20individus%20ont%20fait%20hurler%20leurs%20moteurs%20aussi%20fort%20que%20possible%20dans%20le%20seul%20but%20d%27irriter%20au%20maximum%20les%20riverains.%20Ces%20rod%C3%A9os%20durent%20des%20heures%2C%20souvent%20jusqu%E2%80%99apr%C3%A8s%20minuit.%0A%0ANotre%20quartier%20est%20soumis%20%C3%A0%20ces%20nuisances%20depuis%20des%20ann%C3%A9es%20et%20je%20suis%20profond%C3%A9ment%20exc%C3%A9d%C3%A9%20par%20cette%20situation.%20En%20plus%20du%20vacarme%20parfois%20insupportable%2C%20je%20crains%20aussi%20des%20blessures%20physiques%2C%20voire%20pire%2C%20%C3%A0%20cause%20de%20ce%20comportement%20asocial%20et%20dangereux.%0A%0ALes%20mesures%20que%20vous%20avez%20prises%20jusqu%E2%80%99%C3%A0%20pr%C3%A9sent%20pour%20contenir%20ce%20probl%C3%A8me%20ne%20sont%20pas%20efficaces.%20Les%20auteurs%20de%20ces%20rod%C3%A9os%2C%20notamment%20les%20motards%2C%20sont%20toujours%20pr%C3%A9sents.%0A%0AJ%E2%80%99attends%20des%20mesures%20imm%C3%A9diates%20avec%20des%20r%C3%A9sultats%20probants.%0A%0AJ%27ajoute%20le%20collectif%20Stop%20Rodeo%20Atomium%20en%20tant%20que%20destinataire%20de%20ce%20mail.%0A%0ACordialement%2C%0A%0A';">
-      Envoyer le mail au Bourgmestre
-    </button>
-  </div>
+  <button class="big-button" id="sendMail">Envoyer le mail au Bourgmestre</button>
+  <script>
+    // Paramètres du mail
+    var to = "kabinet.ph.close@brucity.be";
+    var cc = "cabinet.a.maes@brucity.be,stoprodeoatomium@gmail.com";
+    var subject = "Stop à la folie des rodéos!";
+    var body = `Monsieur le Bourgmestre,
+
+J’habite à Laeken et je vous écris car je suis victime de nuisances sonores causées par des rodéos urbains. Aujourd’hui encore, ces individus ont fait hurler leurs moteurs aussi fort que possible dans le seul but d'irriter au maximum les riverains. Ces rodéos durent des heures, souvent jusqu’après minuit.
+
+Notre quartier est soumis à ces nuisances depuis des années et je suis profondément excédé par cette situation. En plus du vacarme parfois insupportable, je crains aussi des blessures physiques, voire pire, à cause de ce comportement asocial et dangereux.
+
+Les mesures que vous avez prises jusqu’à présent pour contenir ce problème ne sont pas efficaces. Les auteurs de ces rodéos, notamment les motards, sont toujours présents.
+
+J’attends des mesures immédiates avec des résultats probants.
+
+J'ajoute le collectif Stop Rodeo Atomium en tant que destinataire de ce mail.
+
+Cordialement,`;
+
+    // Construction du lien mailto avec encodage
+    var link = "mailto:" + to
+      + "?cc=" + encodeURIComponent(cc)
+      + "&subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(body);
+
+    document.getElementById('sendMail').addEventListener('click', function() {
+      window.location.href = link;
+    });
+  </script>
 </body>
 </html>
